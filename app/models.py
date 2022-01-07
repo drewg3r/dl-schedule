@@ -1,6 +1,6 @@
 import flask_login
 
-from app import db
+from app import db, login_manager
 
 
 class User(db.Model, flask_login.UserMixin):
@@ -47,3 +47,8 @@ class Event(db.Model):
 
     subject_id = db.Column(db.Integer, db.ForeignKey('subject.id'))
     subject = db.relationship('Subject', back_populates='events')
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)

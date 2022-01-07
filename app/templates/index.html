@@ -3,4 +3,6 @@
 
 {% block content %}
   <h1 class="mt-0">index page</h1>
+  <a href="{{ url_for('auth.login_page') }}">login</a>
+  <a href="{{ url_for('auth.signup_page') }}">sign up</a>
 {% endblock %}

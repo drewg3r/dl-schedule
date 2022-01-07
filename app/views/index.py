@@ -4,5 +4,5 @@ bp = Blueprint('index', __name__, url_prefix='/')
 
 
 @bp.route('/', methods=['GET'])
-def index():
+def index_page():
     return render_template('index.html')
