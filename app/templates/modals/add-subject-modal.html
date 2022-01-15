@@ -1,0 +1,45 @@
+<!-- Add subject modal -->
+<div class="modal fade" id="addSubjectModal" tabindex="-1" aria-labelledby="Add event" aria-modal="true" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addSubjectModalLabel">Add new subject</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-8">
+            <label for="inputSubjectName" class="form-label">Subject name</label>
+            <input type="text" id="inputSubjectName" class="form-control" aria-describedby="subjectNameHelp" maxlength="255">
+            <div id="subjectNameHelp" class="form-text">
+              Full subject name
+            </div>
+          </div>
+          <div class="col-4">
+            <label for="inputSubjectAbbr" class="form-label">Abbreviation</label>
+            <input type="text" id="inputSubjectAbbr" class="form-control" aria-describedby="subjectAbbrHelp" maxlength="10">
+            <div id="subjectAbbrHelp" class="form-text mb-2">
+              Short subject name
+            </div>
+          </div>
+        </div>
+
+        <label for="inputSubjectLecturer" class="form-label">Lecturer</label>
+        <input type="text" id="inputSubjectLecturer" class="form-control" aria-describedby="subjectLecturerHelp" maxlength="255">
+        <div id="subjectLecturerHelp" class="form-text mb-2">
+          Subject's lecturer name
+        </div>
+
+        <label for="inputSubjectLink" class="form-label">Link</label>
+        <input type="text" id="inputSubjectLink" class="form-control" aria-describedby="subjectLinkHelp" maxlength="1023">
+        <div id="subjectLinkHelp" class="form-text">
+          Link to the web resource where the lesson takes place
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="modalAddSubjectSubmit()">Add subject</button>
+      </div>
+    </div>
+  </div>
+</div>

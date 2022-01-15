@@ -1,0 +1,45 @@
+<!-- Edit subject modal -->
+<div class="modal fade" id="editSubjectModal" tabindex="-1" aria-modal="true" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editSubjectModalLabel">Edit subject</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-8">
+            <label for="inputSubjectNameEdit" class="form-label">Subject name</label>
+            <input type="text" id="inputSubjectNameEdit" class="form-control" aria-describedby="subjectNameHelp" maxlength="255" required>
+            <div id="subjectNameHelp" class="form-text">
+              Full subject name
+            </div>
+          </div>
+          <div class="col-4">
+            <label for="inputSubjectAbbrEdit" class="form-label">Abbreviation</label>
+            <input type="text" id="inputSubjectAbbrEdit" class="form-control" aria-describedby="subjectAbbrHelp" maxlength="10" required>
+            <div id="subjectAbbrHelp" class="form-text mb-2">
+              Short subject name
+            </div>
+          </div>
+        </div>
+
+        <label for="inputSubjectLecturerEdit" class="form-label">Lecturer</label>
+        <input type="text" id="inputSubjectLecturerEdit" class="form-control" aria-describedby="subjectLecturerHelp" maxlength="255" required>
+        <div id="subjectLecturerHelp" class="form-text mb-2">
+          Subject's lecturer name
+        </div>
+
+        <label for="inputSubjectLinkEdit" class="form-label">Link</label>
+        <input type="text" id="inputSubjectLinkEdit" class="form-control" aria-describedby="subjectLinkHelp" maxlength="1023" required>
+        <div id="subjectLinkHelp" class="form-text">
+          Link to the web resource where the lesson takes place
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="editSubjectCancelButton" class="btn btn-secondary" data-bs-target="#viewEventModal" data-bs-toggle="modal">Cancel</button>
+        <button type="button" id="editSubjectSaveButton" class="btn btn-primary" data-bs-dismiss="modal" onclick="putSubject()">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

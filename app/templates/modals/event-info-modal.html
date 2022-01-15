@@ -1,0 +1,61 @@
+<!-- Event info modal -->
+<div class="modal fade" id="viewEventModal" tabindex="-1" aria-modal="true" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addSubjectModalLabel">Event info</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-4">
+            <label for="inputEventStartView" class="form-label mb-0">Start time</label>
+            <input type="text" id="inputEventStartView" class="form-control-sm form-control-plaintext" readonly>
+          </div>
+          <div class="col-4">
+            <label for="inputEventEndView" class="form-label mb-0">End time</label>
+            <input type="text" id="inputEventEndView" class="form-control-sm form-control-plaintext" readonly>
+          </div>
+          <div class="col-4">
+            <label for="inputEventWeekdayView" class="form-label mb-0">Weekday</label>
+            <input type="text" id="inputEventWeekdayView" class="form-control-sm form-control-plaintext" readonly>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-8">
+            <label for="inputSubjectNameView" class="form-label mb-0">Subject name</label>
+            <input type="text" id="inputSubjectNameView" class="form-control-sm form-control-plaintext" readonly>
+          </div>
+          <div class="col-4">
+            <label for="inputSubjectAbbrView" class="form-label mb-0">Abbreviation</label>
+            <input type="text" id="inputSubjectAbbrView" class="form-control-sm form-control-plaintext" readonly>
+          </div>
+        </div>
+
+        <label for="inputSubjectLecturerView" class="form-label mb-0">Lecturer</label>
+        <input type="text" id="inputSubjectLecturerView" class="form-control-sm form-control-plaintext" readonly>
+
+        <label for="inputSubjectLinkView" class="form-label mb-0">Link</label>
+        <input type="text" id="inputSubjectLinkView" class="form-control-sm form-control-plaintext" readonly>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-target="#editSubjectModal" data-bs-toggle="modal">Edit</button>
+        <button type="button" id="viewEventDeleteButton" class="btn btn-danger" data-bs-dismiss="modal">Delete event</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    window.addEventListener("load", function() {
+        let viewSubjectModal = document.getElementById('viewEventModal')
+        viewSubjectModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const eventId = button.getAttribute('data-event-id');
+            document.getElementById("viewEventDeleteButton").onclick = function (){deleteEvent(eventId);};
+            getEvent(eventId);
+        })
+    });
+</script>

@@ -1,8 +1,62 @@
 {%  extends "base.html" %}
-{% block title %} Welcome! {% endblock %}
 
 {% block content %}
-  <h1 class="mt-0">index page</h1>
-  <a href="{{ url_for('auth.login_page') }}">login</a>
-  <a href="{{ url_for('auth.signup_page') }}">sign up</a>
+  <div class="col-lg-8 mx-auto pt-3">
+    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <span class="fs-4">Distance learning schedule</span>
+    </header>
+
+    <main>
+      <h1>Distance learning schedule</h1>
+      <p class="fs-5 col-md-8">
+        Keep your schedule and lesson links in one place. Especially useful for distance learning.
+      </p>
+
+      <div class="mb-5">
+        <a href="{{ url_for('auth.login_page') }}" class="btn btn-primary btn-lg px-4 me-2">Log in</a>
+        <a href="{{ url_for('auth.signup_page') }}" class="btn btn-warning btn-lg px-4">Sign up</a>
+      </div>
+
+      <hr class="col-3 col-md-2 mb-5">
+
+      <div class="row g-5">
+        <div class="col-md-6">
+          <h2>Host on your own server</h2>
+          <p>To get a local copy up and running follow these simple steps.</p>
+          <ol>
+            <li>Clone the repo <br>
+              <code>git clone https://github.com/drewg3r/dl-schedule.git</code>
+            </li>
+            <li>Go to <kbd>app</kbd> directory <br>
+              <code>cd dl-schedule/app</code>
+            </li>
+            <li>Install dependencies <br>
+              <code>python -m pip install -r requirements.txt</code>
+            </li>
+            <li>Set necessary environment variables  <br>
+              <code>export DLS_SECRET_KEY=YOUR_SECRET_KEY</code><br>
+              <code>export DLS_DATABASE_URI=postgresql://username:password@host:port/dls</code>
+            </li>
+            <li>Run application <br>
+              <code>python -m flask run --host="0.0.0.0" --port="80"</code>
+            </li>
+          </ol>
+        </div>
+
+        <div class="col-md-6">
+          <h2>Built with</h2>
+          <p>Technologies used in this project:</p>
+          <ul>
+            <li><a href="https://www.python.org/" rel="nofollow">Python</a></li>
+            <li><a href="https://flask.palletsprojects.com/" rel="nofollow">Flask</a></li>
+            <li><a href="https://getbootstrap.com/" rel="nofollow">Bootstrap</a></li>
+            <li><a href="https://www.postgresql.org/" rel="nofollow">PostgreSQL</a></li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer class="pt-5 my-5 text-muted border-top">
+      <a href="https://github.com/drewg3r">drewg3r</a> | <a href="https://github.com/drewg3r/dl-schedule">repo</a> &middot; &copy; 2021
+    </footer>
+  </div>
 {% endblock %}

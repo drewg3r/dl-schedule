@@ -1,0 +1,22 @@
+{%  extends "base.html" %}
+
+{% block include %}
+  {{ super() }}
+  <link href="{{ url_for("static", filename="css/main.css") }}" rel="stylesheet">
+{% endblock %}
+
+{% block title %} Welcome! {% endblock %}
+
+{% block navbar %}
+  {% include "nav.html" %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="mt-0">schedule page</h1>
+    {% if current_user.is_authenticated %}
+      <h2>Welcome, {{ current_user.username }}</h2>
+      <a href="{{ url_for('auth.logout') }}">Logout</a>
+    {% else %}
+      <h2>please log in :(</h2>
+    {% endif %}
+{% endblock %}
