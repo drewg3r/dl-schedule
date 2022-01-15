@@ -10,7 +10,7 @@
   <p align="center">
     Convenient schedule for distance learning. One place for all your items and links.
     <br />
-    <a href=""><strong>View demo</strong></a>
+    <a href="https://github.com/drewg3r/dl-schedule"><strong>View demo</strong></a>
     <br />
   </p>
 </div>
