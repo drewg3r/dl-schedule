@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg" aria-label="Eighth navbar example">
+  <div class="container border-bottom pb-2 pt-2">
+    <a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="/">
+      <span class="fs-4">dl-schedule</span>
+    </a>
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="pe-3">Menu</span>
+    </button>
+
+    <div class="navbar-collapse collapse" id="navbarsExample07" style="">
+      <div class="vr me-3"></div>
+      <ul class="navbar-nav me-auto mb-0 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-dark text-decoration-none" href="{{ url_for("schedule.today_page") }}">Today</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark text-decoration-none" href="{{ url_for("schedule.tomorrow_page") }}">Tomorrow</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark text-decoration-none" href="{{ url_for("schedule.week_page") }}">Week</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark text-decoration-none" href="{{ url_for("schedule.subjects_page") }}">Subjects</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDartDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ current_user.username }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+{#            <li><a class="dropdown-item" href="{{ url_for("index.index_page") }}">Settings</a></li>#}
+            <li><a class="dropdown-item" href="{{ url_for("auth.logout") }}">Log out</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

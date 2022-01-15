@@ -1,0 +1,31 @@
+<!-- Remove confirmation modal -->
+<div class="modal fade" id="removeSubjectModal" tabindex="-1" aria-labelledby="Confirm" aria-modal="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm subject deletion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Do you really want to delete the subject <span class="fw-bold" id="subject-name">somesubj</span>?</p>
+        <p>All related events will also be deleted.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" id="confirm-button" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    window.addEventListener("load", function() {
+        let deleteConfirmModal = document.getElementById('removeSubjectModal')
+        deleteConfirmModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget
+            const subjectId = button.getAttribute('data-subject-id')
+            deleteConfirmModal.querySelector('#subject-name').textContent = button.getAttribute('data-subject-name');
+            deleteConfirmModal.querySelector('#confirm-button').onclick = function () {deleteSubject(subjectId);};
+        })
+    });
+</script>

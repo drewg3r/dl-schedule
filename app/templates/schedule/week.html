@@ -1,0 +1,81 @@
+{%  extends "base.html" %}
+
+{% block include %}
+  {{ super() }}
+  <link href="{{ url_for("static", filename="css/main.css") }}" rel="stylesheet">
+  <link href="{{ url_for("static", filename="css/schedule.css") }}" rel="stylesheet">
+  <script src="{{ url_for("static", filename="js/api.js") }}" lang="javascript"></script>
+  <script src="{{ url_for("static", filename="js/events.js") }}" lang="javascript"></script>
+  <script src="{{ url_for("static", filename="js/subjects.js") }}" lang="javascript"></script>
+
+  <script>
+      window.addEventListener("load", function() {
+          let addEventModal = document.getElementById('addEventModal');
+          addEventModal.addEventListener('show.bs.modal', function (event) {
+              const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+              const button = event.relatedTarget;
+              const weekday = button.getAttribute('data-weekday');
+              addEventModal.querySelector('#weekday').setAttribute('value', weekday);
+              addEventModal.querySelector('#weekday-name').textContent = weekdays[weekday];
+          })
+      });
+  </script>
+{% endblock %}
+
+{% block title %} Week {% endblock %}
+
+{% block navbar %}
+  {% include "nav.html" %}
+{% endblock %}
+
+{% block content %}
+  <h1 class="mt-3 pb-4">Week</h1>
+
+  <table class="table table-bordered">
+    <thead >
+    <tr>
+      <th scope="col" style="width: 14.28%; text-align: center">Monday</th>
+      <th scope="col" style="width: 14.28%; text-align: center">Tuesday</th>
+      <th scope="col" style="width: 14.28%; text-align: center">Wednesday</th>
+      <th scope="col" style="width: 14.28%; text-align: center">Thursday</th>
+      <th scope="col" style="width: 14.28%; text-align: center">Friday</th>
+      <th scope="col" style="width: 14.28%; text-align: center">Saturday</th>
+      <th scope="col" style="width: 14.28%; text-align: center">Sunday</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+      {% for weekday in range(7) %}
+        <td>
+          <div class="d-grid gap-2">
+            <a class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#addEventModal" data-weekday="{{ weekday }}">+ Add</a>
+          </div>
+        </td>
+      {% endfor %}
+    </tr>
+
+    {% for row in range(rows) %}
+      <tr>
+        {% for weekday in range(7) %}
+          <td>
+            {% if row < events[weekday]|length %}
+              <div class="card border-0">
+                <div class="card-body">
+                  <h5 class="card-title">{{ events[weekday][row].start_time_str }}-{{ events[weekday][row].end_time_str }}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">{{ events[weekday][row].subject.name_abbr }}</h6>
+                  <a href="" class="card-link" data-event-id="{{ events[weekday][row].id }}" data-subject-id="{{ events[weekday][row].subject.id }}" data-bs-target="#viewEventModal" data-bs-toggle="modal">More</a>
+                </div>
+              </div>
+            {% endif %}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  {% include "modals/add-event-modal.html" %}
+  {% include "modals/event-info-modal.html" %}
+  {% include "modals/edit-subject-modal.html" %}
+{% endblock %}

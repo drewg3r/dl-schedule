@@ -1,0 +1,53 @@
+<!-- Add event modal -->
+<div class="modal fade" id="addEventModal" tabindex="-1" aria-labelledby="Add event" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><span id="weekday-name">{{ weekday }}</span>: add new event</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-6">
+            <label for="inputTimeStart" class="form-label">Start time</label>
+            <div class="input-group" aria-describedby="timeStartHelp">
+              <input type="text" class="form-control" id="inputTimeStartH" maxlength="2" aria-label="Start time hours">
+              <span class="input-group-text">:</span>
+              <input type="text" class="form-control" id="inputTimeStartM" maxlength="2" aria-label="Start time minutes">
+            </div>
+            <div id="timeStartHelp" class="form-text">
+              The time the lesson starts
+            </div>
+          </div>
+          <div class="col-6">
+            <label for="inputTimeEnd" class="form-label">End time</label>
+            <div class="input-group" aria-describedby="timeEndHelp">
+              <input type="text" class="form-control" id="inputTimeEndH" maxlength="2" aria-label="End time hours">
+              <span class="input-group-text">:</span>
+              <input type="text" class="form-control" id="inputTimeEndM" maxlength="2" aria-label="End time minutes">
+            </div>
+            <div id="timeEndHelp" class="form-text">
+              The time the lesson ends
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="weekday" value="{{ weekday_num }}">
+        <br>
+        {% if subjects %}
+          <label for="subjectSelect" class="form-label">Choose subject</label>
+          <select class="form-select" id="subjectSelect" aria-label="Choose subject">
+            {% for subject in subjects %}
+              <option value="{{ subject.id }}">{{ subject.name }}</option>
+            {% endfor %}
+          </select>
+        {% else %}
+          <span class="fs-2">No subjects found</span>
+        {% endif %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="modalAddEventSubmit()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
