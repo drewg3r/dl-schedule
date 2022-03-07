@@ -25,7 +25,7 @@ def login_page():
             flash('Invalid username')
         else:
             resp = make_response(redirect(url_for('schedule.index_page')))
-            resp.set_cookie('api_token', get_primary_token(current_user).token.hex)
+            resp.set_cookie('api_token', get_primary_token(current_user).token)
             return resp
 
     return redirect(url_for('auth.login_page'))
@@ -50,7 +50,7 @@ def signup_page():
             sign_up(username=username, email=email, password=password)
             flash(f'{username}, your account has been created', 'success')
             resp = make_response(redirect(url_for('schedule.index_page')))
-            resp.set_cookie('api_token', get_primary_token(current_user).token.hex)
+            resp.set_cookie('api_token', get_primary_token(current_user).token)
             return resp
         else:
             flash('Passwords don\'t match', 'danger')
