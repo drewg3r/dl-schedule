@@ -96,7 +96,8 @@ class ApiToken(db.Model):
     API tokens for users. Single user can has multiple API tokens.
     Used for authorization via REST API.
     """
-    token = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    # token = db.Column(UUID(as_uuid=False), primary_key=True, default=uuid.uuid4)
+    token = db.Column(db.String(32), primary_key=True, default=lambda: uuid.uuid4().hex)
     date_created = db.Column(db.Date, nullable=False, default=date.today())
     name = db.Column(db.String(255), nullable=True)
     is_primary = db.Column(db.Boolean, nullable=False, default=False)

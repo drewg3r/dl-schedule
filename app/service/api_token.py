@@ -13,7 +13,7 @@ def get_user(token: str | int) -> User:
     :return: instance of User model class
     """
     try:
-        token = ApiToken.query.filter_by(token=uuid.UUID(str(token))).first()
+        token = ApiToken.query.filter_by(token=uuid.UUID(str(token)).hex).first()
     except ValueError:
         raise InvalidTokenFormatException
     if token:
