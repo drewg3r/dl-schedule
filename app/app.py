@@ -21,6 +21,13 @@ def create_app(config='config.DemoConfig'):
     from service.auth import load_user
     login_manager.init_app(app)
 
+    @app.before_first_request
+    def create_tables():
+        from service.db import create_demo_db
+        db.create_all()
+        if app.config['DEMO_MODE']:
+            create_demo_db(db)
+
     with app.app_context():
         from rest import event, subject
         api_bp = Blueprint('api', __name__, url_prefix='/api')
@@ -42,8 +49,6 @@ def create_app(config='config.DemoConfig'):
         app.register_blueprint(index_bp)
         app.register_blueprint(auth_bp)
         app.register_blueprint(schedule_bp)
-
-        db.create_all()
 
         return app
 

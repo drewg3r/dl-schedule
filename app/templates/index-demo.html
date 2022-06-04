@@ -26,24 +26,28 @@
           <ol>
             <li>Clone the repo <br>
               <code>git clone https://github.com/drewg3r/dl-schedule.git</code>
-            </li>
-            <li>Go to <kbd>app</kbd> directory <br>
-              <code>cd dl-schedule/app</code>
-            </li>
-            <li>Install dependencies <br>
-              <code>python -m pip install -r requirements.txt</code>
-            </li>
-            <li>Set necessary environment variables  <br>
-              <code>export DLS_SECRET_KEY=YOUR_SECRET_KEY</code><br>
-              <code>export DLS_DATABASE_URI=postgresql://username:password@host:port/dls</code>
-            </li>
-            <li>Run application <br>
-              <code>python -m flask run --host="0.0.0.0" --port="80"</code>
+            </li><br>
+            <li>Set up production config in <kbd>app/config.py</kbd> <br>
+              Choose random <code>SECRET_KEY</code> and provide database URI
+            </li><br>
+            <li>Use <kbd>docker</kbd> to build image <br>
+              <code>docker build -t dl-schedule dl-schedule</code>
+            </li><br>
+            <li>Run docker image <br>
+              <code>docker run --rm -d -p 8080:8005 dl-schedule</code>
+            </li><br>
+            <li>Your application is working on localhost:8080 <br>
             </li>
           </ol>
         </div>
 
         <div class="col-md-6">
+          <h2>Demo mode</h2>
+          <p>Use following credentials to log in:<br>
+          Username: <kbd>demo</kbd><br>
+          Password: <kbd>1234</kbd><br>
+          </p>
+
           <h2>Built with</h2>
           <p>Technologies used in this project:</p>
           <ul>

@@ -32,7 +32,6 @@ about them. It's enough just to keep the tab with `today` page open.
 * [Python](https://www.python.org/)
 * [Flask](https://flask.palletsprojects.com/)
 * [Bootstrap](https://getbootstrap.com/)
-* [PostgreSQL](https://www.postgresql.org/)
 
 
 
@@ -44,9 +43,8 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 To install, you will need:
-* postgresql
-* python3.10
-* pip
+* python3.10 + pip OR
+* docker
 
 ### Installation
 
@@ -54,23 +52,16 @@ To install, you will need:
    ```sh
    git clone https://github.com/drewg3r/dl-schedule.git
    ```
-2. Go to `app` directory
+2. Set up production config in `app/config.py`. Choose random `SECRET_KEY` and provide database `URI`
+3. Use `docker` to build image 
    ```sh
-   cd dl-schedule/app
+    docker build -t dl-schedule dl-schedule
    ```
-3. Install dependencies
+4. Run docker image 
    ```sh
-   python -m pip install -r requirements.txt
+    docker run --rm -d -p 8080:8005 dl-schedule
    ```
-4. Set necessary environment variables
-   ```sh
-   export DLS_SECRET_KEY=YOUR_SECRET_KEY
-   export DLS_DATABASE_URI=postgresql://username:password@host:port/dls
-   ```
-5. Run application
-   ```sh
-   python -m flask run --host="0.0.0.0" --port="80"
-   ```
+5. Your application is working on localhost:8080 
 
 
 <!-- LICENSE -->
