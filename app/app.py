@@ -11,7 +11,7 @@ login_manager = LoginManager()
 rest_api = Api()
 
 
-def create_app(config='config.ProductionConfig'):
+def create_app(config='config.DemoConfig'):
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object(config)
 
@@ -42,6 +42,8 @@ def create_app(config='config.ProductionConfig'):
         app.register_blueprint(index_bp)
         app.register_blueprint(auth_bp)
         app.register_blueprint(schedule_bp)
+
+        db.create_all()
 
         return app
 
