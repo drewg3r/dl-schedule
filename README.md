@@ -10,7 +10,7 @@
   <p align="center">
     Convenient schedule for distance learning. One place for all your items and links.
     <br />
-    <a href="http://165.227.153.132:5000/"><strong>View demo</strong></a>
+    <a href="http://68.183.75.136/"><strong>View demo</strong></a>
     <br />
   </p>
 </div>
